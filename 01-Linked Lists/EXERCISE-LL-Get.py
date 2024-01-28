@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class LinkedList:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while(temp.next):
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -66,14 +66,19 @@ class LinkedList:
             self.tail = None
         return temp
 
-    ### WRITE GET METHOD HERE ###
-    #                           #
-    #                           #
-    #                           #
-    #                           #
-    #############################
-        
+    def get(self, index):
 
+        if index < 0 or index >= self.length:
+            return None
+
+        counter = 0
+        temp = self.head
+
+        while counter < index:
+            temp = temp.next
+            counter += 1
+
+        return temp
 
 
 my_linked_list = LinkedList(0)

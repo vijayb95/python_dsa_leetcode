@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class LinkedList:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while(temp.next):
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -73,22 +73,28 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
-        
+
     def set_value(self, index, value):
         temp = self.get(index)
         if temp:
             temp.value = value
             return True
         return False
-    
-    ## WRITE INSERT METHOD HERE ##
-    #                            #
-    #                            #
-    #                            #
-    #                            #
-    ##############################
-  
 
+    def insert(self, index, value):
+        previous_index_node = self.get(index-1)
+        current_index_node = self.get(index)
+        if current_index_node is not None:
+            new_node = Node(value)
+            if index == 0:
+                new_node.next = self.head.next
+                self.head = new_node
+            else:
+                previous_index_node.next = new_node
+            new_node.next = current_index_node
+            self.length += 1
+            return True
+        return False
 
 
 my_linked_list = LinkedList(1)
@@ -99,23 +105,22 @@ print('LL before insert():')
 my_linked_list.print_list()
 
 
-my_linked_list.insert(1,2)
+my_linked_list.insert(1, 2)
 
 print('\nLL after insert(2) in middle:')
 my_linked_list.print_list()
 
 
-my_linked_list.insert(0,0)
+my_linked_list.insert(0, 0)
 
 print('\nLL after insert(0) at beginning:')
 my_linked_list.print_list()
 
 
-my_linked_list.insert(4,4)
+my_linked_list.insert(4, 4)
 
 print('\nLL after insert(4) at end:')
 my_linked_list.print_list()
-
 
 
 """

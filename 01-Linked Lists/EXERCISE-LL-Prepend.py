@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class LinkedList:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while(temp.next):
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -44,14 +44,16 @@ class LinkedList:
             self.tail = None
         return temp
 
-    ## WRITE PREPEND METHOD HERE ##
-    #                             #
-    #                             #
-    #                             #
-    #                             #
-    ###############################
-
-
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
 
 
 my_linked_list = LinkedList(2)
@@ -76,7 +78,6 @@ print('Tail:', my_linked_list.tail.value)
 print('Length:', my_linked_list.length, '\n')
 print('Linked List:')
 my_linked_list.print_list()
-
 
 
 """
