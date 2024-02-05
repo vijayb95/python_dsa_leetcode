@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class LinkedList:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while(temp.next):
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -73,14 +73,14 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
-        
+
     def set_value(self, index, value):
         temp = self.get(index)
         if temp:
             temp.value = value
             return True
         return False
-    
+
     def insert(self, index, value):
         if index < 0 or index > self.length:
             return False
@@ -92,8 +92,8 @@ class LinkedList:
         temp = self.get(index - 1)
         new_node.next = temp.next
         temp.next = new_node
-        self.length += 1   
-        return True  
+        self.length += 1
+        return True
 
     def remove(self, index):
         if index < 0 or index >= self.length:
@@ -109,14 +109,21 @@ class LinkedList:
         self.length -= 1
         return temp
 
-    ## WRITE REVERSE METHOD HERE ##
-    #                             #
-    #                             #
-    #                             #
-    #                             #
-    ###############################
-  
-
+    def reverse(self):
+        if self.length < 2:
+            return
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+            after = temp.next
+            temp.next = before
 
 
 my_linked_list = LinkedList(1)
@@ -131,7 +138,6 @@ my_linked_list.reverse()
 
 print('\nLL after reverse():')
 my_linked_list.print_list()
-
 
 
 """
