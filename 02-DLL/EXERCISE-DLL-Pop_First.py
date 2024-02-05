@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.next = None
         self.prev = None
-        
+
 
 class DoublyLinkedList:
     def __init__(self, value):
@@ -17,7 +17,7 @@ class DoublyLinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -36,8 +36,8 @@ class DoublyLinkedList:
         temp = self.tail
         if self.length == 1:
             self.head = None
-            self.tail = None 
-        else:       
+            self.tail = None
+        else:
             self.tail = self.tail.prev
             self.tail.next = None
             temp.prev = None
@@ -56,14 +56,21 @@ class DoublyLinkedList:
         self.length += 1
         return True
 
-    ## WRITE POP_FIRST METHOD HERE ##
-    #                               #
-    #                               #
-    #                               #
-    #                               #
-    #################################
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = temp.next
+            self.head.prev = None
 
-
+        temp.next = None
+        temp.prev = None
+        self.length -= 1
+        return temp
 
 
 my_doubly_linked_list = DoublyLinkedList(2)
